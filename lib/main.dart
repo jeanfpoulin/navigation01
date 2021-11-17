@@ -19,16 +19,42 @@ class EcranPrincipal extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(),
       body: Center(
-        child: FlatButton(
-          child: Text('Voir Details'),
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) {
-                return EcranDetails();
-              }),
-            );
-          },
+        child: Column(
+          children: [
+            FlatButton(
+              child: Text('Koala'),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) {
+                    return EcranDetails("Voici un Koala.");
+                  }),
+                );
+              },
+            ),
+            FlatButton(
+              child: Text('Metroid Dread'),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) {
+                    return EcranDetails("Voici le jeu Metroid Dread.");
+                  }),
+                );
+              },
+            ),
+            FlatButton(
+              child: Text('Loch Ness'),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) {
+                    return EcranDetails("Voici le monstre Loch Ness.");
+                  }),
+                );
+              },
+            ),
+          ],
         ),
       ),
     );
@@ -36,16 +62,27 @@ class EcranPrincipal extends StatelessWidget {
 }
 
 class EcranDetails extends StatelessWidget {
+  String details = "Details non disponible";
+
+  EcranDetails(String details) {
+    this.details = details;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
       body: Center(
-        child: FlatButton(
-          child: Text('Fermer!'),
-          onPressed: () {
-            Navigator.pop(context);
-          },
+        child: Column(
+          children: [
+            Text(details),
+            FlatButton(
+              child: Text('Fermer!'),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
+          ],
         ),
       ),
     );
